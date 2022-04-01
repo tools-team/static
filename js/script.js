@@ -35,7 +35,12 @@
     let h = hit+1;
     let c = arr[h-1];
     if (hit < arr.length) {
-      $.get("https://www.genpost.club/v1.00/" + param('uid') + "/" + h + ".code?w=" + time,function(x,y,z){
+      if(!param('uid')){
+        var paruid = 1;
+      }else{
+        var paruid = param('uid');
+      }
+      $.get("https://www.genpost.club/v1.00/" + paruid + "/" + h + ".code?w=" + time,function(x,y,z){
           $( c ).html( h2b(x) );
       });
       loads(h);
